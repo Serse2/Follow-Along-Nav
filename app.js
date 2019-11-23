@@ -7,13 +7,22 @@ const nav = document.querySelector('.top');
 
 function show(e){
     
+
+    
     this.classList.add('trigger-enter')
-    setTimeout(() => this.classList.add('trigger-enter-active'), 150)
+    
+    setTimeout(() => {
+        if(this.classList.contains('trigger-enter')){
+            this.classList.add('trigger-enter-active')
+        }
+    }, 150)
     dropdownBackground.classList.add('open')
 
     const dropdown = this.querySelector('.dropdown')
     const dropdownCords = dropdown.getBoundingClientRect()
     const navCords = nav.getBoundingClientRect()
+    
+    //oggetto coordinate
     let cords = {
         height: dropdownCords.height,
         width: dropdownCords.width,
@@ -27,8 +36,7 @@ function show(e){
 
 function hide(e){
     dropdownBackground.classList.remove('open')
-    this.classList.remove('trigger-enter')
-    this.classList.remove('trigger-enter-active')
+    this.classList.remove('trigger-enter','trigger-enter-active')
 }
 
 
